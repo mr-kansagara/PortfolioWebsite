@@ -28,7 +28,12 @@
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "@types/gsap": "^1.20.2",
+    "@types/three": "^0.181.0",
+    "gsap": "^3.13.0",
     "rxjs": "~7.8.0",
+    "three": "^0.181.2",
+    "three-globe": "^2.45.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

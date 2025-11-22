@@ -1,0 +1,69 @@
+.about-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.text-column {
+    flex: 1;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.bio {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.visual-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-frame {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    // background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+    background: url(../../../../public/passport\ size\ single.png);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.profile-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, var(--neon-purple) 0%, transparent 70%);
+    opacity: 0.5;
+    z-index: 1;
+    filter: blur(20px);
+}

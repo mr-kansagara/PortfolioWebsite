@@ -1,0 +1,10 @@
+<div #card class="project-card">
+    <div class="card-content">
+        <h3 class="project-title">{{ project?.title || 'Project Title' }}</h3>
+        <p class="project-desc">{{ project?.description || 'Futuristic project description goes here.' }}</p>
+        <div class="tags">
+            <span *ngFor="let tag of project?.tags || ['Angular', 'Three.js']" class="tag">{{ tag }}</span>
+        </div>
+    </div>
+    <div class="card-glow"></div>
+</div>
