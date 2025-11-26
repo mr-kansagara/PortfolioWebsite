@@ -11,7 +11,9 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'push' || 
+        (github.event_name == 'pull_request' && github.event.action != 'closed')
+
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
@@ -19,35 +21,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Use stable Node version
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Build Angular app
-      - name: Build app
+      - name: Build Angular app
         run: npm run build
 
-      # Deploy to Azure Static Web Apps
-      - name: Deploy
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AMBITIOUS_GLACIER_0D3BB3E10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
 
-          # IMPORTANT
-          app_location: "/"
-          output_location: "dist/PortfolioWebsite/browser"
-          skip_app_build: true
+          # Angular App Config
+          app_location: "/"                          # Root of your Angular project
+          output_location: "dist/PortfolioWebsite/browser"   # Build output folder
+          skip_app_build: false                      # You already built manually
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
+
     runs-on: ubuntu-latest
     name: Close Pull Request Job
 
@@ -57,6 +56,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AMBITIOUS_GLACIER_0D3BB3E10 }}
           action: "close" 
-
-
 
