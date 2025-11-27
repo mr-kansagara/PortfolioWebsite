@@ -1,52 +1,86 @@
-# PortfolioWebsite
+# Portfolio Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+A modern, interactive portfolio website built with **Angular**, featuring 3D graphics with **Three.js** and smooth animations using **GSAP**.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+- **3D Hero Scene**: An interactive 3D wireframe Icosahedron with a floating particle system using `Three.js`.
+- **Interactive Background**: A dynamic, starry background rendered via HTML5 Canvas.
+- **Custom Cursor**: A smooth, lagging cursor with hover effects powered by `GSAP` and Angular Signals.
+- **Modern Architecture**: Built with Angular Standalone Components and Signals for state management.
+- **Responsive Design**: Fully responsive layout that adapts to different screen sizes.
 
+## 🛠️ Tech Stack
+
+- **Framework**: [Angular](https://angular.io/) (v20+)
+- **3D Graphics**: [Three.js](https://threejs.org/)
+- **Animations**: [GSAP (GreenSock Animation Platform)](https://greensock.com/gsap/)
+- **Styling**: SCSS (Sass)
+- **State Management**: Angular Signals
+
+## 📂 Project Structure
+
+```
+src/app/
+├── components/
+│   ├── hero-scene/       # Three.js 3D Icosahedron & Particles
+│   ├── interactive-bg/   # Canvas-based Starry Background
+│   ├── custom-cursor/    # GSAP-powered Custom Cursor
+│   ├── header/           # Navigation Header
+│   ├── about/            # About Section
+│   ├── projects-section/ # Portfolio Projects Display
+│   └── contact/          # Contact Information
+├── services/
+│   └── cursor.service.ts # Signal-based service for cursor hover states
+└── app.*                 # Main application entry point
+```
+
+## ⚙️ Installation & Setup
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
+### Prerequisites
+- Node.js
+- npm or yarn
+
+### 1. Clone the repository
+```bash
+git clone <repository-url>
+cd PortfolioWebsite
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start the development server
 ```bash
 ng serve
 ```
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📦 Build
 
-## Code scaffolding
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🧪 Running Tests
 
-```bash
-ng generate component component-name
-```
+- **Unit Tests**: Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **End-to-End Tests**: Run `ng e2e` to execute the end-to-end tests.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🤝 Contributing
 
-```bash
-ng generate --help
-```
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Building
+## 📄 License
 
-To build the project run:
+This project is licensed under the MIT License.
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
 
 ```bash
 ng e2e
