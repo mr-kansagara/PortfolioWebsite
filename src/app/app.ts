@@ -7,10 +7,11 @@ import { ProjectsSectionComponent } from './components/projects-section/projects
 import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { SkillShowcaseComponent } from './components/skill-showcase/skill-showcase.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent],
+  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

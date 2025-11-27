@@ -1,0 +1,15 @@
+<section class="skills-section">
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="skills-grid">
+        <div class="skill-card" *ngFor="let skill of skills" #skillItem (mousemove)="onMouseMove($event, skillItem)"
+            (mouseleave)="onMouseLeave(skillItem)">
+            <div class="card-content">
+                <div class="glow"></div>
+                <div class="icon-container">
+                    <img [src]="skill.icon" [alt]="skill.name" class="skill-icon">
+                </div>
+                <span class="skill-name">{{ skill.name }}</span>
+            </div>
+        </div>
+    </div>
+</section>
