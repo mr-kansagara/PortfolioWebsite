@@ -1,14 +1,16 @@
 <header [class.scrolled]="isScrolled()">
     <div class="container header-content">
         <div class="logo">
-            <span class="neon-text">RAJ</span>.DEV
+            <a href="#"><span class="neon-text">RAJ KANSAGARA</span></a>
+            
         </div>
 
         <nav [class.open]="isMenuOpen()">
             <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">Work</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#skills-section" class="nav-link">Skills</a>
+            <a href="#projects-section" class="nav-link">Work</a>
+            <a href="#about-section" class="nav-link">About</a>
+            <a href="#contact-section" class="nav-link">Contact</a>
         </nav>
 
         <button class="menu-toggle" (click)="toggleMenu()">
