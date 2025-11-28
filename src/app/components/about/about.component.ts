@@ -54,7 +54,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
         this.renderer = new THREE.WebGLRenderer({ 
             canvas: canvas, 
             alpha: true, 
-            antialias: true 
+            antialias: true,
+            powerPreference: "high-performance"
         });
         this.renderer.setSize(width, height);
         this.renderer.setPixelRatio(window.devicePixelRatio);
