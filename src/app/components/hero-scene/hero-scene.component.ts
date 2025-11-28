@@ -67,14 +67,16 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
       color: 0x00f3ff,
       wireframe: true,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.4
+            
+
     });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);
 
     // Particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 700;
+    const particlesCount = 0;
     const posArray = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -86,7 +88,8 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
       size: 0.02,
       color: 0xbd00ff,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.3,
+      sizeAttenuation: true
     });
 
     this.particles = new THREE.Points(particlesGeometry, particlesMaterial);
