@@ -12,24 +12,19 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
 export class ProjectsSectionComponent {
     projects = [
         {
-            title: 'Neon Dashboard',
-            description: 'A futuristic analytics dashboard with real-time data visualization.',
-            tags: ['Angular', 'D3.js', 'WebSockets']
+            title: 'Mass Elemental (Real Estate)',
+            description: 'Designed reporting modules using Telerik Reports, optimized SQL queries for data aggregation, and configured CI/CD pipelines for automated deployment.',
+            tags: ['.NET Core', 'Telerik Reports', 'SQL Server', 'CI/CD']
         },
         {
-            title: 'Cyber Commerce',
-            description: 'Next-gen e-commerce platform with 3D product previews.',
-            tags: ['React', 'Three.js', 'Stripe']
+            title: 'EHA Soft (Document Management)',
+            description: 'Developed backend modules for role-based access control, visualized user data with Telerik reports, and enhanced data security and compliance.',
+            tags: ['.NET Core', 'RBAC', 'Telerik Reports', 'Security']
         },
         {
-            title: 'AI Nexus',
-            description: 'Generative AI interface for creative professionals.',
-            tags: ['Vue', 'OpenAI API', 'WebGL']
-        },
-        {
-            title: 'Hologram Chat',
-            description: 'Immersive 3D chat application with spatial audio.',
-            tags: ['WebRTC', 'Babylon.js', 'Node.js']
+            title: 'LMS (Learning Management System)',
+            description: 'Built a responsive application structure using Angular 19, integrated RESTful APIs for real-time communication, and enhanced UX/UI for accessibility.',
+            tags: ['Angular', 'RESTful APIs', 'UX/UI', 'TypeScript']
         }
     ];
 }

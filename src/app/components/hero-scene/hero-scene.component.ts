@@ -49,7 +49,6 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Scene
     this.scene = new THREE.Scene();
-    // this.scene.background = new THREE.Color(0x0a0a0a); // Let CSS handle background
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
