@@ -1,0 +1,27 @@
+<section class="testimonials-section" id="testimonials-section">
+  <div class="container">
+    <h2 class="section-title">What People Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let item of testimonials" #testimonialCard 
+           (mousemove)="onMouseMove($event, testimonialCard)" 
+           (mouseleave)="onMouseLeave(testimonialCard)">
+        <div class="quote-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.923 14.929 15.081C15.537 14.239 16.313 13.536 17.257 12.972C18.201 12.408 19.205 12.126 20.269 12.126V7.00001C18.361 7.00001 16.627 7.53801 15.067 8.61401C13.507 9.69001 12.318 11.086 11.5 12.802V21H14.017ZM5.01697 21L5.01697 18C5.01697 16.896 5.32097 15.923 5.92897 15.081C6.53697 14.239 7.31297 13.536 8.25697 12.972C9.20097 12.408 10.205 12.126 11.269 12.126V7.00001C9.36097 7.00001 7.62697 7.53801 6.06697 8.61401C4.50697 9.69001 3.31797 11.086 2.5 12.802V21H5.01697Z"/>
+          </svg>
+        </div>
+        <p class="testimonial-text">{{ item.text }}</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            {{ item.name.charAt(0) }}
+          </div>
+          <div class="author-info">
+            <h4 class="author-name">{{ item.name }}</h4>
+            <span class="author-role">{{ item.role }}</span>
+          </div>
+        </div>
+        <div class="card-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
