@@ -8,10 +8,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { SkillShowcaseComponent } from './components/skill-showcase/skill-showcase.component';
+import { ExperienceTimelineComponent } from './components/experience-timeline/experience-timeline.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent],
+  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent, ExperienceTimelineComponent, TestimonialsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
