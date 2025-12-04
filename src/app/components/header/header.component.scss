@@ -34,6 +34,7 @@ header {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 2rem;
 
     @media (max-width: 768px) {
@@ -76,6 +77,23 @@ nav {
         height: 2px;
         background: var(--neon-purple);
         transition: width 0.3s ease;
+    }
+}
+
+.resume-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+        background: rgba(0, 243, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        color: #fff;
     }
 }
 
