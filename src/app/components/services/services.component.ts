@@ -55,4 +55,38 @@ export class ServicesComponent implements AfterViewInit {
       ease: 'power2.out'
     });
   }
+
+  onMouseMove(event: MouseEvent, card: HTMLElement) {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    gsap.to(card, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      scale: 1.1,
+      duration: 0.3,
+      ease: 'power2.out',
+      transformPerspective: 1000
+    });
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  }
+
+  onMouseLeave(card: HTMLElement) {
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      duration: 0.5,
+      ease: 'elastic.out(1, 0.5)'
+    });
+  }
 }

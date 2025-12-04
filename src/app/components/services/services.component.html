@@ -2,7 +2,9 @@
     <div class="container">
         <h2 class="section-title">My Services</h2>
         <div class="services-grid">
-            <div class="service-card" *ngFor="let service of services" #serviceCard>
+            <div class="service-card" *ngFor="let service of services" #serviceCard
+                 (mousemove)="onMouseMove($event, serviceCard)" 
+                 (mouseleave)="onMouseLeave(serviceCard)">
                 <div class="card-inner">
                     <div class="icon-wrapper">
                         <!-- Icons based on service.icon -->

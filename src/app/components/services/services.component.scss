@@ -29,17 +29,18 @@
 
 .service-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 2px; /* For border gradient effect if needed, or just spacing */
+    padding: 0; /* Padding handled by card-inner */
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
     height: 100%;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
 
     &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         border-color: var(--neon-cyan);
 
         .card-glow {
@@ -48,7 +49,7 @@
 
         .icon-wrapper {
             color: var(--neon-cyan);
-            transform: scale(1.1);
+            transform: translateZ(30px) scale(1.1);
             border-color: var(--neon-cyan);
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
         }
@@ -56,8 +57,8 @@
 }
 
 .card-inner {
-    background: var(--bg-card);
-    border-radius: 13px;
+    background: transparent; /* Removed solid background for glass effect */
+    border-radius: 15px;
     padding: 30px;
     height: 100%;
     position: relative;
@@ -66,6 +67,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transform: translateZ(20px); /* Bring content forward */
 }
 
 .icon-wrapper {
@@ -79,6 +81,7 @@
     margin-bottom: 20px;
     color: var(--text-muted);
     transition: all 0.3s ease;
+    transform: translateZ(20px);
 
     svg {
         width: 35px;
@@ -90,6 +93,7 @@
     font-size: 1.5rem;
     color: var(--text-main);
     margin-bottom: 15px;
+    transform: translateZ(20px);
 }
 
 .service-desc {
@@ -97,6 +101,7 @@
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 25px;
+    transform: translateZ(20px);
 }
 
 .service-features {
@@ -105,6 +110,7 @@
     margin-top: auto;
     width: 100%;
     text-align: left;
+    transform: translateZ(20px);
 
     li {
         color: #ccc;
@@ -133,7 +139,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.15), transparent 70%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.1) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
