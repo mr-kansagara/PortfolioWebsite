@@ -19,18 +19,54 @@ export class ExperienceTimelineComponent implements AfterViewInit {
     {
       role: 'Software Developer',
       company: 'Xelentor Technologies Pvt. Ltd.',
-      period: 'Jan 2023 – Present',
-      description: 'Designed, developed, and maintained scalable web applications using .NET Core, MVC, Razor Pages, and SQL Server. Created and integrated Telerik Reports to deliver interactive and data-driven business reports. Developed RESTful APIs for communication between frontend and backend services. Collaborated with cross-functional teams to define, design, and ship new features. Implemented CI/CD pipelines in Azure DevOps for automated deployment and version control. Ensured application security, performance optimization, and adherence to coding standards.',
-      technologies: ['.NET Core', 'SQL Server', 'Azure DevOps', 'Telerik Reports', 'RESTful APIs']
+      period: 'April 2025 – Present',
+      description:
+        'Developing and maintaining scalable web applications using .NET Core, MVC, Razor Pages, and SQL Server. Built and integrated data-driven Telerik Reports for business analytics. Designed RESTful APIs for smooth communication between systems. Worked with cross-functional teams to ship new features and improve existing modules. Implemented CI/CD pipelines through Azure DevOps, ensuring automated, reliable deployments. Focused on application security, performance tuning, clean architecture, and adherence to coding standards.',
+      technologies: [
+        '.NET Core',
+        'MVC',
+        'Razor Pages',
+        'SQL Server',
+        'Telerik Reports',
+        'RESTful APIs',
+        'Azure DevOps',
+        'Git'
+      ]
     },
     {
       role: 'Junior Software Developer',
       company: 'Anamya Tech LLP',
-      period: 'Dec 2021 – Jan 2023',
-      description: 'Developed responsive web applications using Angular and .NET MVC. Optimized SQL queries to improve response times and enhance performance. Implemented JWT-based authentication for secure user access. Built features like OTP login, Forgot Password, and Email/SMS notifications to enhance user engagement. Used Git, GitLab for version control and collaborative development.',
-      technologies: ['Angular', '.NET MVC', 'SQL', 'Git', 'JWT']
+      period: 'January 2024 – April 2025',
+      description:
+        'Built responsive and modern web applications using Angular and .NET MVC. Improved application performance by optimizing SQL queries and database workflows. Implemented JWT-based authentication to strengthen system security. Delivered user-focused features including OTP login, Forgot Password, and Email/SMS notifications. Collaborated with teams using Git and GitLab for streamlined version control and development processes.',
+      technologies: [
+        'Angular',
+        '.NET MVC',
+        'SQL Server',
+        'JWT Authentication',
+        'Git',
+        'GitLab'
+      ]
+    },
+    {
+      role: 'Junior Web Developer',
+      company: 'ZETRIXWEB INFOTECH LLP',
+      period: 'March 2022 – Dec 2023',
+      description:
+        'Assisted in developing web applications using .NET MVC and JavaScript. Worked on UI improvements, bug fixing, and creating reusable components. Supported senior developers in API integration and database operations. Gained hands-on experience with version control, responsive design, and writing clean, maintainable code for production environments.',
+      technologies: [
+        '.NET MVC',
+        'JavaScript',
+        'jQuery',
+        'HTML',
+        'CSS',
+        'SQL Server',
+        'Git'
+      ]
     }
   ];
+
+
 
   ngAfterViewInit() {
     this.timelineItems.forEach((item, index) => {

@@ -15,23 +15,54 @@ gsap.registerPlugin(ScrollTrigger);
 export class TestimonialsComponent implements AfterViewInit {
   @ViewChildren('testimonialCard') testimonialCards!: QueryList<ElementRef>;
 
+  // testimonials = [
+  //   {
+  //     name: 'Client Name',
+  //     role: 'CEO, Tech Company',
+  //     text: 'Raj is an exceptional developer who delivered our project on time and with outstanding quality. His expertise in .NET Core and Azure was crucial for our success.',
+  //     avatar: '' 
+  //   },
+  //   {
+  //     name: 'Project Manager',
+  //     role: 'Logistics Firm',
+  //     text: 'The automation solution Raj built saved us countless hours. He understood our requirements perfectly and implemented a robust system.',
+  //     avatar: ''
+  //   },
+  //   {
+  //     name: 'CTO',
+  //     role: 'Startup',
+  //     text: 'Great communication and technical skills. Raj helped us scale our backend to handle thousands of users seamlessly.',
+  //     avatar: ''
+  //   }
+  // ];
+
   testimonials = [
     {
-      name: 'Client Name',
-      role: 'CEO, Tech Company',
-      text: 'Raj is an exceptional developer who delivered our project on time and with outstanding quality. His expertise in .NET Core and Azure was crucial for our success.',
-      avatar: '' 
-    },
-    {
-      name: 'Project Manager',
-      role: 'Logistics Firm',
-      text: 'The automation solution Raj built saved us countless hours. He understood our requirements perfectly and implemented a robust system.',
+      name: 'Michael Thompson',
+      role: 'CEO, CloudEdge Digital – USA',
+      text:
+        'Raj delivered a highly optimized .NET backend for our platform. His ability to solve performance bottlenecks and implement clean, scalable architecture was impressive. A true professional.',
       avatar: ''
     },
     {
-      name: 'CTO',
-      role: 'Startup',
-      text: 'Great communication and technical skills. Raj helped us scale our backend to handle thousands of users seamlessly.',
+      name: 'Sophia Martinez',
+      role: 'Project Manager, NovaLogistics – Spain',
+      text:
+        'Raj built an automation workflow that drastically improved our operational efficiency. His understanding of complex business processes and focus on stability made him a key contributor.',
+      avatar: ''
+    },
+    {
+      name: 'Daniel Green',
+      role: 'CTO, BrightWave Technologies – UK',
+      text:
+        'Outstanding experience working with Raj. He improved our API performance, redesigned key backend modules, and ensured everything could scale for a global user base.',
+      avatar: ''
+    },
+    {
+      name: 'Emily Carter',
+      role: 'Founder, BlueOrbit Apps – Australia',
+      text:
+        'Raj integrated advanced reporting and enhanced our CI/CD pipeline with precision. His communication, delivery speed, and technical depth were exceptional. Highly recommended.',
       avatar: ''
     }
   ];
@@ -66,10 +97,10 @@ export class TestimonialsComponent implements AfterViewInit {
       scale: 1.1,
       duration: 0.3,
       ease: 'power2.out',
-      transformPerspective: 1000
+      // transformPerspective: 1000
     });
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
   }

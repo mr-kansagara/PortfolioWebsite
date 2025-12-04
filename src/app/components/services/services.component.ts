@@ -15,32 +15,93 @@ gsap.registerPlugin(ScrollTrigger);
 export class ServicesComponent implements AfterViewInit {
   @ViewChildren('serviceCard') serviceCards!: QueryList<ElementRef>;
 
+  // services = [
+  //   {
+  //     title: 'Custom Web Development',
+  //     icon: 'code',
+  //     description: 'Building robust, scalable, and high-performance web applications tailored to your business needs using .NET Core and Angular.',
+  //     features: ['Single Page Applications (SPA)', 'Enterprise Web Solutions', 'Progressive Web Apps (PWA)']
+  //   },
+  //   {
+  //     title: 'Cloud & DevOps Solutions',
+  //     icon: 'cloud',
+  //     description: 'Architecting secure cloud infrastructures on Azure/AWS and implementing CI/CD pipelines for automated and reliable deployments.',
+  //     features: ['Azure & AWS Architecture', 'CI/CD Automation', 'Docker & Kubernetes']
+  //   },
+  //   {
+  //     title: 'API Integration & Backend',
+  //     icon: 'api',
+  //     description: 'Designing RESTful APIs and Microservices to seamlessly integrate disparate systems and automate complex business workflows.',
+  //     features: ['RESTful API Design', 'Microservices Architecture', 'Third-party Integrations']
+  //   },
+  //   {
+  //     title: 'Database Optimization',
+  //     icon: 'database',
+  //     description: 'Designing efficient database schemas and optimizing SQL queries to ensure your applications run fast and handle data securely.',
+  //     features: ['SQL Server Optimization', 'Data Migration', 'Secure Data Storage']
+  //   }
+  // ];
+
   services = [
     {
-      title: 'Custom Web Development',
+      title: 'Full-Stack Web Development',
       icon: 'code',
-      description: 'Building robust, scalable, and high-performance web applications tailored to your business needs using .NET Core and Angular.',
-      features: ['Single Page Applications (SPA)', 'Enterprise Web Solutions', 'Progressive Web Apps (PWA)']
+      description:
+        'Building scalable, secure, and high-performance web applications using .NET Core, C#, Angular, and MVC. I create end-to-end solutions tailored to business workflows.',
+      features: [
+        'Enterprise-grade Web Applications',
+        'SPA Development with Angular',
+        'Clean Architecture & Maintainable Code'
+      ]
     },
     {
-      title: 'Cloud & DevOps Solutions',
-      icon: 'cloud',
-      description: 'Architecting secure cloud infrastructures on Azure/AWS and implementing CI/CD pipelines for automated and reliable deployments.',
-      features: ['Azure & AWS Architecture', 'CI/CD Automation', 'Docker & Kubernetes']
-    },
-    {
-      title: 'API Integration & Backend',
+      title: 'API Development & System Integration',
       icon: 'api',
-      description: 'Designing RESTful APIs and Microservices to seamlessly integrate disparate systems and automate complex business workflows.',
-      features: ['RESTful API Design', 'Microservices Architecture', 'Third-party Integrations']
+      description:
+        'Designing and implementing RESTful APIs and microservice-based solutions that enable seamless communication between frontend and backend systems.',
+      features: [
+        'RESTful API Design',
+        'Microservices Architecture',
+        'Third-party Integrations'
+      ]
     },
     {
-      title: 'Database Optimization',
+      title: 'Cloud Deployment & CI/CD Automation',
+      icon: 'cloud',
+      description:
+        'Setting up secure cloud environments and automating deployments using Azure DevOps, Git, and GitLab for smooth and reliable delivery pipelines.',
+      features: [
+        'Azure DevOps Pipelines',
+        'Automated Build & Release',
+        'Containerization with Docker'
+      ]
+    },
+    {
+      title: 'Database Design & Performance Optimization',
       icon: 'database',
-      description: 'Designing efficient database schemas and optimizing SQL queries to ensure your applications run fast and handle data securely.',
-      features: ['SQL Server Optimization', 'Data Migration', 'Secure Data Storage']
+      description:
+        'Designing optimized SQL Server databases, writing efficient queries, and ensuring secure data handling for high-speed and reliable applications.',
+      features: [
+        'SQL Server Optimization',
+        'Stored Procedures & Query Tuning',
+        'Secure Data Access & Migration'
+      ]
+    },
+    {
+      title: 'Reporting & Analytics Solutions',
+      icon: 'bar_chart',
+      description:
+        'Developing data-driven reporting modules using Telerik Reporting to deliver meaningful insights and business intelligence dashboards.',
+      features: [
+        'Telerik Report Development',
+        'Data Visualization',
+        'Custom Business Reports'
+      ]
     }
   ];
+
+
+
 
   ngAfterViewInit() {
     gsap.from(this.serviceCards.map(card => card.nativeElement), {
@@ -72,7 +133,7 @@ export class ServicesComponent implements AfterViewInit {
       scale: 1.1,
       duration: 0.3,
       ease: 'power2.out',
-      transformPerspective: 1000
+      // transformPerspective: 1000
     });
 
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
