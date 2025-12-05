@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TelegramService } from '../../services/telegram.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-contact',
@@ -8,33 +10,29 @@ import { Component } from '@angular/core';
     styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-    sendEmail(name: string, senderEmail: string, message: string) {
-        const email = "mr.kansagara@gmail.com";
-        const subject = `Portfolio Contact: ${name}`;
-        const body = `Name: ${name}\nEmail: ${senderEmail}\n\nMessage:\n${message}`;
 
-        // Gmail compose URL
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        // Outlook Web compose URL
-        const outlookWebUrl = `https://outlook.office.com/mail/deeplink/compose?to=${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    constructor(
+        private telegramService: TelegramService,
+        private notificationService: NotificationService
+    ) {}
 
-        // Step 1: Try Gmail (if user is logged in Gmail, it opens directly)
-        fetch("https://mail.google.com", { mode: "no-cors" })
-            .then(() => {
-                // Gmail reachable → open gmail
-                window.open(gmailUrl, "_blank");
-            })
-            .catch(() => {
-                // Gmail not reachable → try Outlook Web
-                fetch("https://outlook.office.com", { mode: "no-cors" })
-                    .then(() => {
-                        window.open(outlookWebUrl, "_blank");
-                    })
-                    .catch(() => {
-                        // Fallback → default email client
-                        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    });
-            });
+    sendMessage(name: string, email: string, message: string) {
+        if (!name || !email || !message) {
+            this.notificationService.show('Please fill in all fields.', 'error');
+            return;
+        }
+
+        this.telegramService.sendMessage(name, email, message).subscribe({
+            next: (response) => {
+                this.notificationService.show('Message sent successfully!', 'success');
+                // Optional: Clear form fields here if needed, but since we are using template refs passed by value, 
+                // we can't easily clear them without accessing the DOM or using Forms.
+                // For now, we'll just show the success message.
+            },
+            error: (error) => {
+                console.error('Error sending message:', error);
+                this.notificationService.show('Failed to send message. Please try again.', 'error');
+            }
+        });
     }
 }
