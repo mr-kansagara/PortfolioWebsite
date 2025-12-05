@@ -24,8 +24,11 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     private windowHalfX = window.innerWidth / 2;
     private windowHalfY = window.innerHeight / 2;
     private animationId: number = 0;
+    private isMobile = false;
+    private scrollY = 0;
 
     ngAfterViewInit(): void {
+        this.isMobile = window.innerWidth <= 768;
         this.initThree();
         this.animate();
     }
@@ -181,27 +184,65 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
     @HostListener('document:mousemove', ['$event'])
     onMouseMove(event: MouseEvent) {
-        this.mouse.x = (event.clientX - this.windowHalfX);
-        this.mouse.y = (event.clientY - this.windowHalfY);
+        if (!this.isMobile) {
+            this.mouse.x = (event.clientX - this.windowHalfX);
+            this.mouse.y = (event.clientY - this.windowHalfY);
+        }
+    }
+
+    @HostListener('window:scroll', [])
+    onWindowScroll() {
+        if (this.isMobile) {
+            this.scrollY = window.scrollY;
+        }
+    }
+
+    @HostListener('window:resize', [])
+    onWindowResize() {
+        this.windowHalfX = window.innerWidth / 2;
+        this.windowHalfY = window.innerHeight / 2;
+        this.isMobile = window.innerWidth <= 768;
+        
+        if (this.camera && this.renderer) {
+            const canvas = this.canvasRef.nativeElement;
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            
+            this.camera.aspect = width / height;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(width, height);
+        }
     }
 
     private animate() {
         this.animationId = requestAnimationFrame(this.animate.bind(this));
 
-        // Calculate target rotations based on mouse position
-        // Limit the rotation angles
-        const targetX = THREE.MathUtils.clamp(this.mouse.y * 0.001, -0.5, 0.5);
-        const targetY = THREE.MathUtils.clamp(this.mouse.x * 0.001, -0.8, 0.8);
+        let targetX = 0;
+        let targetY = 0;
+
+        if (this.isMobile) {
+            // Mobile: Head movement based on scroll
+            // Map scroll position to a rotation range
+            // Assuming the about section is near the top, we can use scrollY directly
+            // Adjust the divisor to control sensitivity
+            const scrollFactor = (this.scrollY % 1000) / 500; // Cycle every 1000px
+            targetY = Math.sin(scrollFactor * Math.PI) * 0.5; // Look left/right
+            targetX = Math.cos(scrollFactor * Math.PI) * 0.2; // Look up/down slightly
+        } else {
+            // Desktop: Mouse interaction
+            targetX = THREE.MathUtils.clamp(this.mouse.y * 0.001, -0.5, 0.5);
+            targetY = THREE.MathUtils.clamp(this.mouse.x * 0.001, -0.8, 0.8);
+        }
 
         // Smoothly interpolate current rotation to target
         this.targetRotation.x = targetX;
         this.targetRotation.y = targetY;
 
-        // Head follows mouse
+        // Head follows mouse/scroll
         this.headGroup.rotation.x += (this.targetRotation.x - this.headGroup.rotation.x) * 0.1;
         this.headGroup.rotation.y += (this.targetRotation.y - this.headGroup.rotation.y) * 0.1;
 
-        // Eyes follow mouse slightly more (paralax effect)
+        // Eyes follow slightly more (parallax effect)
         this.eyeGroup.position.x = this.targetRotation.y * 0.2;
         this.eyeGroup.position.y = -this.targetRotation.x * 0.2;
 

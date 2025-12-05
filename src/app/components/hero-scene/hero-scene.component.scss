@@ -62,5 +62,10 @@
             background: var(--neon-purple);
             box-shadow: 0 0 20px var(--neon-purple);
         }
+
+        @media (max-width: 768px) {
+            background-color: #d000ffb0;
+        }
+
     }
 }

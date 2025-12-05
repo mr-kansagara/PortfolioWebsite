@@ -26,10 +26,12 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private windowHalfX = window.innerWidth / 2;
   private windowHalfY = window.innerHeight / 2;
+  private isMobile = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth <= 768;
   }
 
   ngAfterViewInit(): void {
@@ -101,17 +103,25 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
   private animate(): void {
     requestAnimationFrame(this.animate.bind(this));
 
-    this.targetX = this.mouseX * 0.001;
-    this.targetY = this.mouseY * 0.001;
+    if (this.isMobile) {
+      // Mobile: Continuous auto-rotation
+      this.mesh.rotation.y += 0.001;
+      this.mesh.rotation.x += 0.005;
+      this.particles.rotation.y += 0.002;
+    } else {
+      // Desktop: Mouse interaction
+      this.targetX = this.mouseX * 0.001;
+      this.targetY = this.mouseY * 0.001;
 
-    this.mesh.rotation.y += 0.005;
-    this.mesh.rotation.x += 0.002;
+      this.mesh.rotation.y += 0.005;
+      this.mesh.rotation.x += 0.002;
 
-    this.mesh.rotation.y += 0.5 * (this.targetX - this.mesh.rotation.y);
-    this.mesh.rotation.x += 0.05 * (this.targetY - this.mesh.rotation.x);
+      this.mesh.rotation.y += 0.05 * (this.targetX - this.mesh.rotation.y);
+      this.mesh.rotation.x += 0.05 * (this.targetY - this.mesh.rotation.x);
 
-    this.particles.rotation.y = -this.mouseX * 0.0002;
-    this.particles.rotation.x = -this.mouseY * 0.0002;
+      this.particles.rotation.y = -this.mouseX * 0.0002;
+      this.particles.rotation.x = -this.mouseY * 0.0002;
+    }
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -119,6 +129,7 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
   private onWindowResize(): void {
     this.windowHalfX = window.innerWidth / 2;
     this.windowHalfY = window.innerHeight / 2;
+    this.isMobile = window.innerWidth <= 768;
 
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();

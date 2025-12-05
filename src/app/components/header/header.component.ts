@@ -20,4 +20,8 @@ export class HeaderComponent {
     toggleMenu() {
         this.isMenuOpen.update(v => !v);
     }
+
+    closeMenu() {
+        this.isMenuOpen.set(false);
+    }
 }
