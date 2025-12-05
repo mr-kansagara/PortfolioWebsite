@@ -13,11 +13,12 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { ServicesComponent } from './components/services/services.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent, ExperienceTimelineComponent, TestimonialsComponent, ServicesComponent, FooterComponent, PreloaderComponent],
+  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent, ExperienceTimelineComponent, TestimonialsComponent, ServicesComponent, FooterComponent, PreloaderComponent, NotificationComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
