@@ -6,15 +6,17 @@
         </div>
 
         <nav [class.open]="isMenuOpen()">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#skills-section" class="nav-link">Skills</a>
-            <a href="#projects-section" class="nav-link">Work</a>
-            <a href="#about-section" class="nav-link">About</a>
-            <a href="#contact-section" class="nav-link">Contact</a>
-            <a href="/Profile.pdf" download="Raj_Kansagara_Resume.pdf" class="resume-btn">Resume</a>
+            <a href="#" class="nav-link" (click)="closeMenu()">Home</a>
+            <a href="#skills-section" class="nav-link" (click)="closeMenu()">Skills</a>
+            <a href="#services-section" class="nav-link" (click)="closeMenu()">Services</a>
+            <a href="#experience-section" class="nav-link" (click)="closeMenu()">Experience</a>
+            <a href="#projects-section" class="nav-link" (click)="closeMenu()">Work</a>
+            <a href="#about-section" class="nav-link" (click)="closeMenu()">About</a>
+            <a href="#contact-section" class="nav-link" (click)="closeMenu()">Contact</a>
+            <a href="/Profile.pdf" download="Raj_Kansagara_Resume.pdf" class="resume-btn" (click)="closeMenu()">Resume</a>
         </nav>
 
-        <button class="menu-toggle" (click)="toggleMenu()">
+        <button class="menu-toggle" [class.open]="isMenuOpen()" (click)="toggleMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
