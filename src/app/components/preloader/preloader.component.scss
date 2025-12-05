@@ -1,0 +1,73 @@
+.preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.rk-logo {
+    width: 150px;
+    height: 150px;
+    
+    .hex-border {
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: drawHex 2s ease-in-out forwards, pulseHex 2s ease-in-out infinite 2s;
+    }
+
+    .letter {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 200;
+        animation: drawLetter 1.5s ease-in-out 0.5s forwards;
+    }
+}
+
+.loading-text {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    animation: blink 1s infinite;
+}
+
+@keyframes drawHex {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pulseHex {
+    0%, 100% {
+        stroke: #00f3ff;
+        filter: drop-shadow(0 0 5px #00f3ff);
+    }
+    50% {
+        stroke: #bd00ff;
+        filter: drop-shadow(0 0 15px #bd00ff);
+    }
+}
+
+@keyframes drawLetter {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
