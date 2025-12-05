@@ -12,13 +12,24 @@ import { ExperienceTimelineComponent } from './components/experience-timeline/ex
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ServicesComponent } from './components/services/services.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent, ExperienceTimelineComponent, TestimonialsComponent, ServicesComponent, FooterComponent],
+  imports: [RouterOutlet, HeroSceneComponent, CustomCursorComponent, InteractiveBgComponent, ProjectsSectionComponent, HeaderComponent, AboutComponent, ContactComponent, SkillShowcaseComponent, ExperienceTimelineComponent, TestimonialsComponent, ServicesComponent, FooterComponent, PreloaderComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('PortfolioWebsite');
+
+  constructor(private loadingService: LoadingService) {}
+
+  ngAfterViewInit() {
+    // Simulate loading time for assets and animations
+    setTimeout(() => {
+      this.loadingService.setLoading(false);
+    }, 2500);
+  }
 }

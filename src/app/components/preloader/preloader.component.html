@@ -1,0 +1,28 @@
+<div class="preloader-container" #preloaderContainer *ngIf="isVisible">
+    <div class="logo-wrapper" #logoGroup>
+        <svg class="rk-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Outer Hexagon -->
+            <path class="hex-border" d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" 
+                  fill="none" stroke="#00f3ff" stroke-width="2" filter="url(#glow)"/>
+            
+            <!-- R -->
+            <path class="letter" d="M25 30 V70 M25 30 H45 C55 30 55 50 45 50 H25 M45 50 L55 70" 
+                  fill="none" stroke="#bd00ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+            
+            <!-- K -->
+            <path class="letter" d="M55 30 V70 M75 30 L55 50 L75 70" 
+                  fill="none" stroke="#bd00ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+        </svg>
+        <div class="loading-text">LOADING SYSTEM...</div>
+    </div>
+</div>
