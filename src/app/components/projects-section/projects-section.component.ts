@@ -12,7 +12,7 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
 export class ProjectsSectionComponent {
     projects = [
         {
-            title: 'Mass Elemental – Real Estate Intelligence Platform',
+            title: 'Elemental - Real Estate Intelligence Platform',
             description:
                 'Engineered advanced reporting modules using Telerik Reports, optimized SQL data pipelines, and implemented CI/CD automation for seamless deployments in a large-scale real estate analytics system.',
             tags: ['.NET Core', 'Telerik Reports', 'SQL Server', 'CI/CD']

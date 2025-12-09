@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as THREE from 'three';
 import gsap from 'gsap';
 
@@ -27,8 +27,10 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
   private windowHalfX = window.innerWidth / 2;
   private windowHalfY = window.innerHeight / 2;
   private isMobile = false;
+  private animationId: number | null = null;
+  private mouseMoveListener: any;
 
-  constructor() { }
+  constructor(private ngZone: NgZone) { }
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth <= 768;
@@ -36,13 +38,26 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initThree();
-    this.animate();
+    this.ngZone.runOutsideAngular(() => {
+      this.animate();
+      this.mouseMoveListener = (event: MouseEvent) => {
+        this.mouseX = (event.clientX - this.windowHalfX);
+        this.mouseY = (event.clientY - this.windowHalfY);
+      };
+      window.addEventListener('mousemove', this.mouseMoveListener);
+    });
   }
 
   ngOnDestroy(): void {
     // Cleanup
     if (this.renderer) {
       this.renderer.dispose();
+    }
+    if (this.animationId !== null) {
+      cancelAnimationFrame(this.animationId);
+    }
+    if (this.mouseMoveListener) {
+      window.removeEventListener('mousemove', this.mouseMoveListener);
     }
   }
 
@@ -69,15 +84,13 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
       wireframe: true,
       transparent: true,
       opacity: 0.4
-            
-
     });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);
 
     // Particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 0;
+    const particlesCount = 0; // Kept as 0 per original code, though it seems odd to have 0 particles
     const posArray = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -101,7 +114,7 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private animate(): void {
-    requestAnimationFrame(this.animate.bind(this));
+    this.animationId = requestAnimationFrame(this.animate.bind(this));
 
     if (this.isMobile) {
       // Mobile: Continuous auto-rotation
@@ -134,11 +147,5 @@ export class HeroSceneComponent implements OnInit, AfterViewInit, OnDestroy {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-  }
-
-  @HostListener('document:mousemove', ['$event'])
-  onDocumentMouseMove(event: MouseEvent) {
-    this.mouseX = (event.clientX - this.windowHalfX);
-    this.mouseY = (event.clientY - this.windowHalfY);
   }
 }

@@ -7,7 +7,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
 
   if (req.url.includes('api.telegram.org')) {
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    const modifiedReq = req.clone({ 
+    const modifiedReq = req.clone({
       url: url,
       body: {
         chat_id: chatId,
