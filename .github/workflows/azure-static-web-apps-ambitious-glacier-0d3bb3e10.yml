@@ -3,11 +3,15 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - master
+      - master      # Only run when code is pushed to master
   pull_request:
-    types: [opened, synchronize, reopened, closed]
     branches:
-      - master
+      - master      # Only run when PR targets master
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
 
 jobs:
   build_and_deploy_job:
@@ -56,4 +60,5 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AMBITIOUS_GLACIER_0D3BB3E10 }}
           action: "close" 
+
 
