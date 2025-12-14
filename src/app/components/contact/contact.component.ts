@@ -1,38 +1,46 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { TelegramService } from '../../services/telegram.service';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-contact',
     standalone: true,
-    imports: [],
+    imports: [FormsModule],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
+    name: string = '';
+    email: string = '';
+    message: string = '';
 
     constructor(
         private telegramService: TelegramService,
         private notificationService: NotificationService
-    ) {}
+    ) { }
 
-    sendMessage(name: string, email: string, message: string) {
-        if (!name || !email || !message) {
+    sendMessage() {
+        if (!this.name || !this.email || !this.message) {
             this.notificationService.show('Please fill in all fields.', 'error');
             return;
         }
 
-        this.telegramService.sendMessage(name, email, message).subscribe({
-            next: (response) => {
+        this.telegramService.sendMessage(this.name, this.email, this.message).subscribe({
+            next: (response: any) => {
                 this.notificationService.show('Message sent successfully!', 'success');
-                // Optional: Clear form fields here if needed, but since we are using template refs passed by value, 
-                // we can't easily clear them without accessing the DOM or using Forms.
-                // For now, we'll just show the success message.
+                this.clearForm();
             },
-            error: (error) => {
+            error: (error: any) => {
                 console.error('Error sending message:', error);
                 this.notificationService.show('Failed to send message. Please try again.', 'error');
             }
         });
+    }
+
+    clearForm() {
+        this.name = '';
+        this.email = '';
+        this.message = '';
     }
 }
